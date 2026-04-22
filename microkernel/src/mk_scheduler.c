@@ -4,8 +4,10 @@
 mk_queue_t          mk_readyTasks[MK_CONFIG_PRIORITY_LEVELS];
 mk_taskHandle_t     mk_waitingTasksHead;
 mk_taskHandle_t     mk_stoppedTasksHead;
-mk_taskHandle_t     mk_taskQueueStorage[MK_CONFIG_PRIORITY_LEVELS * MK_CONFIG_MAX_TASKS];
 uint32_t            mk_taskPriorityBitmap;
+
+/* static storage space for each queue in the readyTasks array */
+mk_taskHandle_t     mk_taskQueueStorage[MK_CONFIG_PRIORITY_LEVELS * MK_CONFIG_MAX_TASKS];
 
 int mk_sched_addReadyTask(mk_task_t *task)
 {
@@ -187,7 +189,7 @@ int mk_sched_getNextTask(void)
     {
         mk_taskHandle_t nextTask;
 
-        if (!q_peek(&mk_readyTasks[highestPriority], &nextTask))
+        if (!q_pop(&mk_readyTasks[highestPriority], &nextTask))
         {
             return -1;
         }
