@@ -1,4 +1,5 @@
-#include "main.h"
+#include "hal.h"
+#include "microkernel.h"
 
 void flash_led(void)
 {
