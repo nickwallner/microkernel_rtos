@@ -1,8 +1,8 @@
-TARGET = microkernelrtos
+TARGET = realtime_scheduler
 
 ### Build Variables ###
 # 0 = no debug, 1 = debug
-DEBUG := 1
+DEBUG := 0
 
 ### Build File Path ###
 BUILD_DIR = build
@@ -13,7 +13,7 @@ C_INCLUDES := -Imicrokernel/include \
               -Ihal/ \
 			  -Ihal/stm32f446xx/include
 
-SOURCES := main.c \
+SOURCES := 	demo1.c \
 			microkernel/port/arm/cm4f/port.c \
 			hal/startup.c \
            	$(wildcard microkernel/src/*.c) \
@@ -44,7 +44,7 @@ MCU = $(CPU) $(FPU) $(ABI) -mthumb
 
 ### Compiler Flags ###
 # optimization flags
-OPT := -Os -O2 -flto
+OPT := -Os
 
 # Notes:
 # -Os: optimize for size
