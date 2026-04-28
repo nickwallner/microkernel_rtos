@@ -66,6 +66,7 @@ int main()
 
     USART_Transmit(USART2, "Starting scheduler...\r\n", 24);
 
+    /* initialize kernel, then create tasks, then start the scheduler */
     mk_initKernel();
 
     mk_createTask(flash_red_led, NULL, 256, 2);

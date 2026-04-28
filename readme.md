@@ -32,3 +32,17 @@ If you wish to compile this scheduler, you need:
 
 Then, simply run `make` in the home directory for this project. The resulting
 object files and binary executables will be placed in `build/`
+
+## Demos
+
+I've written two demos for use with a ST Nucleo-F446RE development board.
+
+Demo 1 demonstrates how tasks of the same priority are scheduled in a round-robin
+fashion. It periodically flashes two LEDs connected to the arduino header on the
+development board (see page 49 in `docs/nucleo_f446re/nucleof446_um.pdf`).
+
+Demo 2 demonstrates how the scheduler can effectively multitask with multiple tasks
+of different priorities. It uses the same LEDs from Demo 1 and additionally uses
+USART2 to send messages via the ST-Link debugger that is build into the Nucleo dev board.
+
+Compile either demo by modifying the makefile to use `demo1.c` or `demo2.c` instead of `main.c`.

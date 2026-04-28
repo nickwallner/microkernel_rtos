@@ -3,6 +3,8 @@
 
 void flash_red_led(void)
 {
+    /* PA8 = D7 */
+
     int i = 1000000;
 
     while (1)
@@ -21,6 +23,8 @@ void flash_red_led(void)
 
 void flash_green_led(void)
 {
+    /* PA9 = D8 */
+
     int i = 1000000;
 
     while (1)
@@ -60,6 +64,7 @@ int main()
 
     USART_Transmit(USART2, "Starting scheduler...\r\n", 24);
 
+    /* initialize kernel, then create tasks, then start the scheduler */
     mk_initKernel();
 
     mk_createTask(flash_red_led, NULL, 256, 0);

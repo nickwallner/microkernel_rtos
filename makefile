@@ -5,7 +5,7 @@ TARGET = realtime_scheduler
 DEBUG := 0
 
 ### Build File Path ###
-BUILD_DIR = build
+BUILD_DIR = build/$(TARGET)
 
 ### C Sources, Defines, and Includes ###
 C_INCLUDES := -Imicrokernel/include \
@@ -13,7 +13,7 @@ C_INCLUDES := -Imicrokernel/include \
               -Ihal/ \
 			  -Ihal/stm32f446xx/include
 
-SOURCES := 	demo1.c \
+SOURCES := 	main.c \
 			microkernel/port/arm/cm4f/port.c \
 			hal/startup.c \
            	$(wildcard microkernel/src/*.c) \
